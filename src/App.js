@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from "./globalStyles"
+import { BrowserRouter as Router , Switch, Route} from 'react-router-dom';
+import Navbar from "./components/Navbar";
+import Cryptocurrencies from "./components/Cryptocurrencies";
+import Home from "./components/Home";
+import CryptoDetails from "./components/CryptoDetails";
+import TrendDetails from "./components/TrendDetails";
+import News from "./components/News";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+   <Router>
+       <GlobalStyles/>
+       <Navbar/>
+
+       <Switch> 
+    <Route exact path="/">  <Home/> </Route>
+    <Route exact path="/markets"> <Cryptocurrencies/> </Route>
+    <Route exact path="/coin/:coinId"> <CryptoDetails/> </Route>
+    <Route exact path="/coins/:coinId2"> <TrendDetails/> </Route>
+    <Route exact path="/news"> <News/> </Route>
+            
+    </Switch>
+    </Router>
+    </>
   );
 }
 
