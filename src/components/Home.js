@@ -26,7 +26,7 @@ flex-wrap:wrap;
 height: 100%;
 justify-content: center;
 align-items: center;
-margin-top: 30px;
+margin-top: 50px;
 
 `
 
@@ -50,7 +50,7 @@ function Home() {
 
     return (
        <>   <Body>
-        <Typography align="center" style={{marginTop:"30px", width:"100%"}} variant="h5">Global Crypto Stats</Typography>
+        <Typography align="center" style={{marginTop:"50px", width:"100%"}} variant="h5">Global Crypto Stats</Typography>
         <Containers maxWidth="md" align="center">
     
       <Stack 
