@@ -91,18 +91,19 @@ color: #071013;
 export const NavLinks = styled(Link)`
   color: #071013;
   display: flex;
-  font-weight: 300;
+
   align-items: center;
   text-decoration: none ;
   padding: 0.5rem 1.8rem;
   height: 100%;
   cursor: pointer;
   font-size: 24px;
+  
   &:hover {
-    color: #071013;
+    color:#0071BD ;
     font-size: 26px;
     transition: 0.1s all ease-in-out;
-    border-bottom: 1px solid #071013;
+    border-bottom: 1px solid #0071BD;
   }
 
   @media screen and (max-width: 960px) {

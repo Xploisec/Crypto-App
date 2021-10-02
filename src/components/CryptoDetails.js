@@ -34,24 +34,48 @@ const { Option } = Select;
    `
    const DescWrapper = styled.div`
     display:flex;
-    flex-wrap: wrap;
-     height: 100%;
+     justify-content:center;
+     text-align:center;
+     flex-wrap: wrap;
+
      width: 100%;
-     margin: 50px;
+     margin-top: 50px;
    `
+     const Stats = styled.div`
+     display:flexbox;
+     justify-content: center;
+     text-align: center;
+     flex-direction: row;
+     flex-wrap: wrap;
+      height: 100%;
+      width: 100%;
+     
+    `
    const Desc = styled.div`
- margin: 30px;
+ 
      width: 40%;
      height: 100%;
    `
    const Links = styled.div`
-      margin: 30px;
-        width: 40%;
-     height: 100%;
+    margin-left: -130px;
+     
+    
+     @media screen and (max-width: 960px) {
+      margin-left: 0;
+      border: 1px solid;
+    border-radius:8px;
+       }
    `
     const Div = styled.div`
      width: 80%;
     `
+    const ListItemTexts = styled(ListItemText)`
+     margin-left: 300px;
+       @media screen and (max-width: 960px) {
+         margin-left: 30px;
+       }
+    `
+
 function CryptoDetails() {
 
     const { coinId } = useParams();
@@ -93,8 +117,8 @@ function CryptoDetails() {
       </Select>
       <LineChart coinHistory={coinHistory} currentPrice={millify(datas.price)} coinName={datas.name} />
       </Div>
-   
-    <List style={{marginRight:"150"}}
+   <Stats>
+    <List style={{marginTop:"20px"}}
       sx={{
         width: '100%',
         maxWidth: 360,
@@ -114,7 +138,7 @@ function CryptoDetails() {
       </>  ))}
     </List>
     
-    <List style={{marginLeft:"150px"}}
+    <List style={{marginTop:"20px"}}
       sx={{
         width: '100%',
         maxWidth: 360,
@@ -125,7 +149,7 @@ function CryptoDetails() {
         <>
       <ListItem>
         <ListItemAvatar>
-        <ListItemText primary= {icon} />
+        <ListItemText  primary= {icon} />
         </ListItemAvatar>
         <ListItemText primary= {title}  />
         <ListItemText primary= {value} />
@@ -133,39 +157,40 @@ function CryptoDetails() {
       <Divider variant="inset" component="li" />
       </>  ))}
     </List>
-
+    </Stats>
        <DescWrapper>
          <Desc>
-           <Typography variant="h6"> What is {datas.name}?</Typography>
+           <Typography  style={{color:"#0071BD"}} variant="h6"> What is {datas.name}?</Typography>
            <Typography variant="body1">  {HTMLReactParser(datas.description)}</Typography>
          </Desc>
-         <Links>
-  
-         <List 
-      sx={{ 
-        width: '100%',
-        maxWidth: 360,
-        bgcolor: 'background.paper',
-      }}
-    >
-      {datas.links?.map((link) => (
-        <>
-        
-      <ListItem style={{height: '70px' }}>
-        <ListItemAvatar>
-        <ListItemText  primary= {link.type} />
-        </ListItemAvatar>
-        <Link style={{textDecoration:"none"}} to={{ pathname: link.url }} target="_blank">
-        <ListItemText style={{marginLeft:"400px"}} primary= {link.name}  />
-        </Link>
-      </ListItem>
-      <Divider variant="inset" component="li" />
-    
-      </>  ))}
-    </List>
- 
-        </Links>
        </DescWrapper>
+                <Links>
+            
+            <List 
+          sx={{ 
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+          }}
+          >
+          {datas.links?.map((link) => (
+          <>
+            <Link style={{textDecoration:"none"}} to={{ pathname: link.url }} target="_blank">
+          <ListItem >
+          <ListItemAvatar>
+          <ListItemText  primary= {link.type} />
+          </ListItemAvatar>
+
+          <ListItemTexts  primary= {link.name}  />
+
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          </Link>
+          </>  ))}
+          </List>
+
+          </Links>
+    
     </Container>
  </>
 
@@ -173,3 +198,6 @@ function CryptoDetails() {
 }
 
 export default CryptoDetails;
+
+/*---------------------------------------------------------------- 
+        */

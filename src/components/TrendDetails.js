@@ -7,10 +7,6 @@ import LineChart from './LineChart';
 import millify from "millify"
 import {FaDollarSign,FaHashtag} from "react-icons/fa"
 import {GrMoney} from "react-icons/gr"
-import {BiMoney} from "react-icons/bi"
-import {ImStatsDots } from "react-icons/im"
-import {RiExchangeDollarFill} from "react-icons/ri"
-import {AiOutlineStop,AiOutlineInfoCircle,AiOutlineCheck} from "react-icons/ai"
 import Loader from "./Loader"
 import styled from "styled-components"
 import List from '@mui/material/List';
@@ -19,36 +15,41 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Divider from '@mui/material/Divider';
 import {Link} from "react-router-dom"
+import {ImStatsDots } from "react-icons/im"
 
 
+const Container = styled.div`
+display:flex;
+justify-content:center;
+text-align:center;
+flex-wrap: wrap;
+width: 100%;
+`
+const DescWrapper = styled.div`
+display:flex;
+justify-content:center;
+text-align:center;
+flex-wrap: wrap;
+
+width: 100%;
+margin-top: 50px;
+`
+
+const Desc = styled.div`
+
+width: 40%;
+height: 100%;
+`
+const Links = styled.div`
+    margin: 30px;
+  border: 1px solid;
+    border-radius:8px;
+   justify-content: center ;
+   text-align: center;
 
 
+`
 
-
-   const Container = styled.div`
-     display:flex;
-     justify-content:center;
-     text-align:center;
-     flex-wrap: wrap;
-     width: 100%;
-   `
-   const DescWrapper = styled.div`
-    display:flex;
-    flex-wrap: wrap;
-     height: 100%;
-     width: 100%;
-     margin: 50px;
-   `
-   const Desc = styled.div`
- margin: 30px;
-     width: 40%;
-     height: 100%;
-   `
-   const Links = styled.div`
-      margin: 30px;
-        width: 40%;
-     height: 100%;
-   `
 function CryptoDetails() {
 
     const { coinId2 } = useParams();
@@ -62,11 +63,20 @@ function CryptoDetails() {
     if (isFetching) return <Loader/>;
 
     const stats = [
-      { title: 'Price to USD', value: `$ ${datas.current_price && millify(datas.current_price)}`, icon: <FaDollarSign /> },
+      { title: 'Price to USD', value: `$ ${datas.market_data.current_price.usd && millify(datas.market_data.current_price.usd)}`, icon: <FaDollarSign /> },
       { title: 'Rank', value: datas.market_cap_rank, icon: <FaHashtag /> },
-      { title: '24h Volume', value: `$ ${datas.volume && millify(datas.volume)}`, icon: <GrMoney /> },
-      { title: 'Market Cap', value: `$ ${datas.market_cap_change_24h && millify(datas.market_cap_change_24h)}`, icon: <FaDollarSign /> },
+      { title: '24h Volume', value: `$ ${datas.market_data.total_volume.usd && millify(datas.market_data.total_volume.usd)}`, icon: <GrMoney /> },
+      { title: 'Market Cap', value: `$ ${datas.market_data.market_cap.usd && millify(datas.market_data.market_cap.usd)}`, icon: <FaDollarSign /> },
+      { title: '24h change', value: ` ${datas.market_data.price_change_percentage_24h.toFixed(2)}%`, icon: <ImStatsDots /> },
    
+    ];
+    const Linkdata = [
+      { title: 'Homepage', value:` ${datas.links?.homepage[0]}`},
+      { title: 'Blockchain Site', value:` ${datas.links?.blockchain_site[0]} `},
+      { title: 'Official Forum', value:` ${datas.links?.official_forum_url[0]} `},
+      { title: 'Chat', value: `${datas.links?.chat_url[0]}`},
+      { title: 'Announcement', value: `${datas.links?.announcement_url[0]}` },
+      { title: 'Github', value: `${datas.links?.repos_url?.github[0]}`},
     ];
 
 
@@ -87,7 +97,7 @@ function CryptoDetails() {
         <>
       <ListItem>
         <ListItemAvatar>
-        <ListItemText primary= {icon} />
+        <ListItemText  primary= {icon} />
         </ListItemAvatar>
         <ListItemText primary= {title}  />
         <ListItemText primary= {value} />
@@ -100,15 +110,33 @@ function CryptoDetails() {
 
        <DescWrapper>
          <Desc>
-           <Typography variant="h6"> What is {datas.name}?</Typography>
+           <Typography style={{color:"#0071BD"}} variant="h6"> What is {datas.name}?</Typography>
            <Typography variant="body1">  {HTMLReactParser(datas.description.en)}</Typography>
          </Desc>
+         </DescWrapper>
          <Links>
-  
-   
- 
+         <List 
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: 'background.paper',
+      }}
+    >
+        {Linkdata?.map(({ title, value }) => (
+        <> <Link style={{textDecoration:"none"}} to={{ pathname: value }} target="_blank">
+      <ListItem>
+        <ListItemAvatar>
+        <ListItemText primary= {title}/>
+        </ListItemAvatar>
+        
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      </Link>
+      </> ))}
+      
+    </List>
         </Links>
-       </DescWrapper>
+
     </Container>
  </>
 

@@ -26,7 +26,7 @@ function Deneme() {
     <>
       <Typography
         align="center"
-        style={{ marginTop: "60px", paddingBottom:"10px", width: "50%" ,borderBottom: "1px solid"}}
+        style={{ marginTop: "60px", paddingBottom:"10px",borderBottom: "1px solid",width:"100%",color:"#0071BD "}}
         variant="h5"
       >
         Last 24h Trending Coins

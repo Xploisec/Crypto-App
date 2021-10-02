@@ -53,12 +53,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
        width: 70%;
      }
  `
- const Sea = styled("div")`
+ const Sym = styled("div")`
    font-size:10px;
-   margin-top: 4px;
+   margin-top: 8px;
    margin-left: 4px;
    color: #505050;
  `
+  const Name = styled("div")`
+   margin-top: 14px;
+  `
   const UpIcon = styled("div")`
    display:  ${({ show }) => (show ? "flex" : "none")};
     position: fixed;
@@ -155,8 +158,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
        
               <StyledTableCell style={{display:"flex"}} component="th" scope="row">
                     <Typography variant="subtitle1">  #{coin.rank}</Typography>   
-              <Avatar   style={{margin:"0 10px 0 10px"}}    src={coin.iconUrl}
-                     sx={{ width: 30, height: 30 }} />  {coin.name} <Sea> {coin.symbol}</Sea> 
+              <Avatar   style={{margin:"10px 10px 0 10px"}}    src={coin.iconUrl}
+                     sx={{ width: 30, height: 30 }} /> <Name>  {coin.name} </Name> <Sym> {coin.symbol}</Sym> 
               </StyledTableCell>   
               <StyledTableCell align="right">${millify(coin.price)}</StyledTableCell>
               <StyledTableCell align="right">{coin.change < 0 ? (
