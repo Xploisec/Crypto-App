@@ -114,7 +114,7 @@ function CryptoDetails() {
    
     <Container>
     <Chart>
-      <Select style={{width:"20%", textAlign:"flex-start", }} defaultValue="7d"placeholder="Select Timeperiod" 
+      <Select style={{width:"20%", textAlign:"left", }} defaultValue="7d"placeholder="Select Timeperiod" 
       onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
