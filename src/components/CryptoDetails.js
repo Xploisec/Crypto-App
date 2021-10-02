@@ -31,6 +31,7 @@ const { Option } = Select;
      text-align:center;
      flex-wrap: wrap;
      width: 100%;
+     margin-top: 30px;
    `
    const DescWrapper = styled.div`
     display:flex;
@@ -66,8 +67,10 @@ const { Option } = Select;
     border-radius:8px;
        }
    `
-    const Div = styled.div`
+    const Chart = styled.div`
      width: 80%;
+     display:flex;
+     flex-direction: column;
     `
     const ListItemTexts = styled(ListItemText)`
      margin-left: 300px;
@@ -110,13 +113,13 @@ function CryptoDetails() {
         <>
    
     <Container>
-    <Div>
-      <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Timeperiod" 
+    <Chart>
+      <Select style={{width:"20%", textAlign:"flex-start", }} defaultValue="7d"placeholder="Select Timeperiod" 
       onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
       <LineChart coinHistory={coinHistory} currentPrice={millify(datas.price)} coinName={datas.name} />
-      </Div>
+      </Chart>
    <Stats>
     <List style={{margin:"20px"}}
       sx={{
