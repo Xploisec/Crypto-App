@@ -25,12 +25,22 @@ text-align:center;
 flex-wrap: wrap;
 width: 100%;
 `
+const Head = styled.div`
+margin: 20px;
+border-bottom: 1px solid #0071BD;
+ font-size: 28px;
+ font-weight: bold;
+ width: 100%;
+ color:#0071BD ;
+ @media screen and (max-width: 968px) {
+  font-size: 18px;
+  }
+`
 const DescWrapper = styled.div`
 display:flex;
 justify-content:center;
 text-align:center;
 flex-wrap: wrap;
-
 width: 100%;
 margin-top: 50px;
 `
@@ -46,8 +56,6 @@ const Links = styled.div`
     border-radius:8px;
    justify-content: center ;
    text-align: center;
-
-
 `
 
 function CryptoDetails() {
@@ -63,7 +71,7 @@ function CryptoDetails() {
     if (isFetching) return <Loader/>;
 
     const stats = [
-      { title: 'Price to USD', value: `$ ${datas.market_data.current_price.usd && millify(datas.market_data.current_price.usd)}`, icon: <FaDollarSign /> },
+      { title: 'Price to USD', value: `$ ${ datas.market_data.current_price.usd.toFixed(3)}`, icon: <FaDollarSign /> },
       { title: 'Rank', value: datas.market_cap_rank, icon: <FaHashtag /> },
       { title: '24h Volume', value: `$ ${datas.market_data.total_volume.usd && millify(datas.market_data.total_volume.usd)}`, icon: <GrMoney /> },
       { title: 'Market Cap', value: `$ ${datas.market_data.market_cap.usd && millify(datas.market_data.market_cap.usd)}`, icon: <FaDollarSign /> },
@@ -85,7 +93,7 @@ function CryptoDetails() {
    
     <Container>
     
-   
+       <Head> {datas.name}</Head>
     <List style={{marginRight:"150"}}
       sx={{
         width: '100%',
