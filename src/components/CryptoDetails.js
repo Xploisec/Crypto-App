@@ -118,7 +118,7 @@ function CryptoDetails() {
       <LineChart coinHistory={coinHistory} currentPrice={millify(datas.price)} coinName={datas.name} />
       </Div>
    <Stats>
-    <List style={{marginTop:"20px"}}
+    <List style={{margin:"20px"}}
       sx={{
         width: '100%',
         maxWidth: 360,
@@ -138,7 +138,7 @@ function CryptoDetails() {
       </>  ))}
     </List>
     
-    <List style={{marginTop:"20px"}}
+    <List style={{margin:"20px"}}
       sx={{
         width: '100%',
         maxWidth: 360,
