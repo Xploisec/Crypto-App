@@ -113,6 +113,7 @@ function CryptoDetails() {
         <>
    
     <Container>
+      
     <Chart>
       <Select style={{width:"20%", textAlign:"left", }} defaultValue="7d"placeholder="Select Timeperiod" 
       onChange={(value) => setTimeperiod(value)}>
@@ -167,6 +168,7 @@ function CryptoDetails() {
            <Typography variant="body1">  {HTMLReactParser(datas.description)}</Typography>
          </Desc>
        </DescWrapper>
+       
                 <Links>
             
             <List 

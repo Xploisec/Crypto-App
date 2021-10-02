@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import millify from "millify";
 import Trending from "./Trending"
 import Loader from "./Loader"
+import Footer from './Footer';
 
 const Body = styled("div")`
  width: 100%;
@@ -86,6 +87,7 @@ function Home() {
       <Trending/>
          
       </Body>
+  
    </>
     )
 }
