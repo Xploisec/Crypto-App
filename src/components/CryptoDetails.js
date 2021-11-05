@@ -176,7 +176,7 @@ function CryptoDetails() {
           width: '100%',
           maxWidth: 360,
           bgcolor: 'background.paper',
-          }}
+          margin:'20px', }}
           >
           {datas.links?.map((link) => (
           <>

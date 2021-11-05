@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import millify from "millify";
 import Trending from "./Trending"
 import Loader from "./Loader"
-import Footer from './Footer';
+
 
 const Body = styled("div")`
  width: 100%;
@@ -42,13 +42,15 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function Home() {
-  
+  /* global BigInt */
+
     const {data,isFetching } = useGetCryptosQuery(1);
     const globalStats = data?.data?.stats
-  
+    const a = '534297502801971400'
+
     if (isFetching) return <Loader/>; 
    
-
+    
     return (
        <>   <Body>
         <Typography align="center" style={{marginTop:"50px", width:"100%"}} variant="h5">Global Crypto Stats</Typography>
@@ -74,7 +76,7 @@ function Home() {
                </Item>
                <Item> <Typography style={{borderBottom: '1px solid rgba(183, 189, 194, .4)', padding:"5px"}}
                variant="subtitle1">Total 24h Volume</Typography>
-               <Typography  variant="h5">${millify(globalStats.total24hVolume)}</Typography>
+               <Typography  variant="h5">${millify(globalStats.total24hVolume/100)}</Typography>
                </Item>
                <Item> <Typography style={{borderBottom: '1px solid rgba(183, 189, 194, .4)' , padding:"5px"}}
                variant="subtitle1">Total Markets</Typography>
