@@ -10,9 +10,9 @@ import Loader from "./Loader"
 
 export default function TrendsCard({price,name,symbol,marketcaprank,image}) {
 
-    const { data, isFetching } = useGetCryptos2Query();
+    const { isFetching } = useGetCryptos2Query();
 
-    const tdata = data?.coins;
+   
   
     if (isFetching) return <Loader/>; 
 

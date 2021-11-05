@@ -8,6 +8,7 @@ import styled from "styled-components"
    height: 25px;
    z-index: 99;
    background-color: #1a7fc4 ;
+   margin-top: 20px;
 `
 
     const Title = styled.div`
