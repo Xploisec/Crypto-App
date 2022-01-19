@@ -98,8 +98,7 @@ function CryptoDetails() {
     const stats = [
       { title: 'Price to USD', value: `$ ${datas.price && millify(datas?.price)}`, icon: <FaDollarSign /> },
       { title: 'Rank', value: datas?.rank, icon: <FaHashtag /> },
-      { title: '24h Volume', value: `$ ${datas.volume && millify(datas?.volume)}`, icon: <GrMoney /> },
-      { title: 'Market Cap', value: `$ ${datas.marketCap && millify(datas?.marketCap)}`, icon: <FaDollarSign /> },
+        { title: 'Market Cap', value: `$ ${datas.marketCap && millify(datas?.marketCap)}`, icon: <FaDollarSign /> },
       { title: 'All-time-high(daily avg.)', value: `$ ${millify(datas?.allTimeHigh?.price && millify(datas?.allTimeHigh?.price))}`, icon: <BiMoney /> },
     ];
     const genericStats = [
