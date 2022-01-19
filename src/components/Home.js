@@ -42,9 +42,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function Home() {
-  /* global BigInt */
+ 
 
-    const {data,isFetching } = useGetCryptosQuery(10);
+    const {data,isFetching } = useGetCryptosQuery(100);
     const globalStats = data?.data?.stats;
   
 

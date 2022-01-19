@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import { useGetCryptoDetails2Query } from '../services/cryptoApi2';
 import {  Typography } from '@mui/material';
-import LineChart from './LineChart';
+
 import millify from "millify"
 import {FaDollarSign,FaHashtag} from "react-icons/fa"
 import {GrMoney} from "react-icons/gr"
