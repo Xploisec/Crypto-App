@@ -142,7 +142,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
             <StyledTableCell style={{backgroundColor:"#212529"}} > Coin </StyledTableCell>
             <StyledTableCell style={{backgroundColor:"#212529"}}align="right">Price</StyledTableCell>
             <StyledTableCell style={{backgroundColor:"#212529"}}align="right">24h Change</StyledTableCell>
-            <StyledTableCell style={{backgroundColor:"#212529"}}align="right">24h Volume</StyledTableCell>
+       
             <StyledTableCell style={{backgroundColor:"#212529"}}align="right">Market Cap</StyledTableCell>
            
           </TableRow>
@@ -153,8 +153,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
           {cryptos?.map((coin) => {
             return(
                 
-            <StyledTableRow style={{textDecoration:"none"}} component={Link} to={`/coin/${coin.id}`} 
-             hover key={coin.id}>
+            <StyledTableRow style={{textDecoration:"none"}} component={Link} to={`/coin/${coin.uuid}`} 
+             hover key={coin.uuid}>
        
               <StyledTableCell style={{display:"flex"}} component="th" scope="row">
                     <Typography variant="subtitle1">  #{coin.rank}</Typography>   
@@ -163,12 +163,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
               </StyledTableCell>   
               <StyledTableCell align="right">${millify(coin.price)}</StyledTableCell>
               <StyledTableCell align="right">{coin.change < 0 ? (
-                  <p style={{color:"#E40000"}}> {coin.change.toFixed(2)}%</p>) : (
-                  <p style={{color:"#12C109"}}> {coin.change.toFixed(2)}%</p>
+                  <p style={{color:"#E40000"}}> {coin.change}%</p>) : (
+                  <p style={{color:"#12C109"}}> {coin.change}%</p>
                   )
               }
               </StyledTableCell>
-              <StyledTableCell align="right">${millify(coin.volume)}</StyledTableCell>
+           
               <StyledTableCell align="right">${millify(coin.marketCap)}</StyledTableCell>
           
             </StyledTableRow>
@@ -183,3 +183,5 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   );
 }
 export default Cryptocurrencies;
+
+//   <StyledTableCell style={{backgroundColor:"#212529"}}align="right">24h Volume</StyledTableCell> 

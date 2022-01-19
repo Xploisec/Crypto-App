@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi';
@@ -83,30 +83,31 @@ function CryptoDetails() {
 
     const { coinId } = useParams();
     const [timeperiod, setTimeperiod] = useState('7d');
-    const time = ['24h', '7d', '30d', '1y','5y'];
+
     const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
     const {data,isFetching} = useGetCryptoDetailsQuery(coinId)
   
     
     const datas = data?.data?.coin;
 
+    const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
 
     if (isFetching) return <Loader/>;
 
     const stats = [
-      { title: 'Price to USD', value: `$ ${datas.price && millify(datas.price)}`, icon: <FaDollarSign /> },
-      { title: 'Rank', value: datas.rank, icon: <FaHashtag /> },
-      { title: '24h Volume', value: `$ ${datas.volume && millify(datas.volume)}`, icon: <GrMoney /> },
-      { title: 'Market Cap', value: `$ ${datas.marketCap && millify(datas.marketCap)}`, icon: <FaDollarSign /> },
-      { title: 'All-time-high(daily avg.)', value: `$ ${millify(datas.allTimeHigh.price)}`, icon: <BiMoney /> },
+      { title: 'Price to USD', value: `$ ${datas.price && millify(datas?.price)}`, icon: <FaDollarSign /> },
+      { title: 'Rank', value: datas?.rank, icon: <FaHashtag /> },
+      { title: '24h Volume', value: `$ ${datas.volume && millify(datas?.volume)}`, icon: <GrMoney /> },
+      { title: 'Market Cap', value: `$ ${datas.marketCap && millify(datas?.marketCap)}`, icon: <FaDollarSign /> },
+      { title: 'All-time-high(daily avg.)', value: `$ ${millify(datas?.allTimeHigh?.price && millify(datas?.allTimeHigh?.price))}`, icon: <BiMoney /> },
     ];
     const genericStats = [
-      { title: 'Number Of Markets', value: datas.numberOfMarkets, icon: <ImStatsDots /> },
-      { title: 'Number Of Exchanges', value: datas.numberOfExchanges, icon: <RiExchangeDollarFill /> },
-      { title: 'Aprroved Supply', value: datas.approvedSupply ? <AiOutlineCheck /> : <AiOutlineStop />, icon: <AiOutlineInfoCircle /> },
-      { title: 'Total Supply', value: `$ ${millify(datas.totalSupply)}`, icon: <AiOutlineInfoCircle /> },
-      { title: 'Circulating Supply', value: `$ ${millify(datas.circulatingSupply)}`, icon: <AiOutlineInfoCircle /> },
+      { title: 'Number Of Markets', value: datas?.numberOfMarkets, icon: <ImStatsDots /> },
+      { title: 'Number Of Exchanges', value: datas?.numberOfExchanges, icon: <RiExchangeDollarFill /> },
+      { title: 'Aprroved Supply', value: datas?.supply?.confirmed ? <AiOutlineCheck /> : <AiOutlineStop />, icon: <AiOutlineInfoCircle /> },
+      { title: 'Total Supply', value: `$ ${millify(datas?.supply?.total)}`, icon: <AiOutlineInfoCircle /> },
+      { title: 'Circulating Supply', value: `$ ${millify(datas?.supply?.circulating)}`, icon: <AiOutlineInfoCircle /> },
     ];
 
     return (
@@ -119,7 +120,7 @@ function CryptoDetails() {
       onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
-      <LineChart coinHistory={coinHistory} currentPrice={millify(datas.price)} coinName={datas.name} />
+      <LineChart coinHistory={coinHistory} currentPrice={millify(datas?.price)} coinName={datas?.name} />
       </Chart>
    <Stats>
     <List style={{margin:"20px"}}

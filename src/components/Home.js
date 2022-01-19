@@ -44,9 +44,9 @@ const Item = styled(Paper)(({ theme }) => ({
 function Home() {
   /* global BigInt */
 
-    const {data,isFetching } = useGetCryptosQuery(1);
-    const globalStats = data?.data?.stats
-    const a = '534297502801971400'
+    const {data,isFetching } = useGetCryptosQuery(10);
+    const globalStats = data?.data?.stats;
+  
 
     if (isFetching) return <Loader/>; 
    
