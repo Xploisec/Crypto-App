@@ -21,7 +21,7 @@ function Footer() {
     return (
        
             <FooterComp>
-               <Title>  CryptoApp </Title>
+               <Title>  CryptoApp ©  Osman Ilgin.</Title>
             </FooterComp>
  
     )
